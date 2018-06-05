@@ -1,0 +1,19 @@
+{
+  "name": "angelica",
+  "version": "1.0.0",
+  "description": "Angelica Portfolio",
+  "main": "Index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezouras/Angelica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezouras/Angelica/issues"
+  },
+  "homepage": "https://github.com/ezouras/Angelica#readme"
+}

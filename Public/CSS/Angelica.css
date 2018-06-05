@@ -1,0 +1,263 @@
+body,html{
+  margin: 0;
+  height: 100%;
+  font-size: 16px;
+  /*font-family: de-walpergens-pica, serif;*/
+/*  font-family: astloch, serif;*/
+  font-family: emilys-candy, serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.8em;
+  color:#666;
+}
+
+.pimg1, .pimg2, .pimg3{
+  position: relative;
+  opacity: 0.70;
+  background-position: center; /* center the image */
+  background-size: cover; /*cover the entire space */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* this is what makes it parallaxy*/
+  /* for mobile devices, do background-attachment: scroll */
+}
+
+.pimg1{
+  background-image: url('./../Images/Photos/selfies/A-selfi-faded.jpg');
+  min-height: 100%;
+
+}
+.pimg2{
+    background-image: url('./../Images/Photos/random/a-birdInHand.jpg');
+    min-height: 400px;
+
+}
+.pimg3{
+    background-image: url('./../Images/Photos/selfies/A-chestTatoo.jpg');
+    min-height: 400px;
+}
+.section{
+  text-align: center;
+  padding: 50px 80px;
+
+}
+
+.section-light{
+  background-color:#e6e6e6;
+  color:#666;
+}
+.section-dark{
+  background-color:#282e34;
+  color:#ddd;
+
+}
+.ptext{
+  position: absolute;
+  /*top:50%;*/
+  top:20%;
+  width:100%;
+  text-align: left;
+  color:#000;
+  font-size: 27px;
+  transform: rotate(20deg) translateX(50px) translateY(125px);
+  /*letter-spacing: 8px;*/
+  /*text-transform: uppercase;*/
+}
+.ptext .border{
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+  transform: rotate(30deg);
+}
+.ptext .border .trans{
+  background-color: transparent;
+
+}
+
+/* portfolio */
+.ia-container{
+  width: 685px;
+  margin: 20px auto;
+  overflow: hidden;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.08);
+  border: 7px solid rgba(255,255,255,0.8);
+}
+
+.ia-container figure{
+  display:block;
+  position: absolute;/* child of the first figure which is
+  marked relative positio below*/
+  top:0;
+  left: 50px;
+  width:335px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.8);
+  transition: all .3x ease-in-out;
+}
+
+.ia-container > figure{/* only immediate children!*/
+  position:relative;
+  left: 0 !important;
+
+}
+.ia-container img{
+  display: block;
+  width: 335px;
+  height:480px;
+}
+
+.ia-container input{ /* allows only one image to be checked */
+  position:absolute;
+  top:0;
+  left:0;
+  width:50px;
+  height:100%;
+  cursor:pointer;
+  border:0;
+  padding: 0;
+  opacity:0;
+  z-index:100;
+  appearance:none;
+}
+
+.ia-container input:checked{
+  width:5px;
+  left:auto;
+  right:0px;
+}
+
+.ia-container input:checked ~ figure{
+  transition: all 0.7s ease-in-out;
+  left:335px;
+}
+
+.ia-container figcaption{
+  display:block;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  position:absolute;
+  top:0px;
+  transition: all .2s linear;
+}
+
+.ia-container figcaption span{
+  position: absolute;
+  top:75%;
+  margin-top:30px;
+  right:20px;
+  left:20px;
+  overflow: hidden;
+  text-align: center;
+  background:rgba(0,0,0,0.8);
+  line-height: 20px;
+  font-size: 18px;
+  opacity:0;
+  font-weight: 700;
+  padding:20px;
+  color:#fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.ia-container input:checked + figcaption,
+.ia-container input:checked:hover + figcaption{
+	background: rgba(87, 73, 81, 0);
+}
+
+.ia-container input:checked + figcaption span {
+	-webkit-transition: all 0.4s ease-in-out 0.5s;
+    -moz-transition: all 0.4s ease-in-out 0.5s;
+    -o-transition: all 0.4s ease-in-out 0.5s;
+    -ms-transition: all 0.4s ease-in-out 0.5s;
+    transition: all 0.4s ease-in-out 0.5s;
+
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+    filter: alpha(opacity=99);
+	opacity: 1;
+
+	top: 50%;
+}
+
+.ia-container #ia-selector-last:checked + figcaption span {
+	-webkit-transition-delay: 0.3s;
+	-moz-transition-delay: 0.3s;
+	-o-transition-delay: 0.3s;
+	-ms-transition-delay: 0.3s;
+	transition-delay: 0.3s;
+}
+
+.ia-container input:hover + figcaption {
+	background: rgba(87, 73, 81, 0.03);
+}
+
+.ia-container input:checked ~ figure input{
+    z-index: 1;
+}
+
+/*normalize*/
+[hidden]{
+  display:none;
+}
+img{
+  border:0;
+}
+figure{
+  margin:0;
+}
+
+@media screen and (max-width: 720px) {
+    .ia-container {
+		width: 540px;
+	}
+
+	.ia-container figure {
+		left: 40px;
+		width: 260px;
+	}
+
+	.ia-container input {
+		width: 40px;
+	}
+
+	.ia-container input:checked ~ figure {
+		left: 260px;
+	}
+
+	.ia-container figcaption span {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 520px) {
+    .ia-container {
+		width: 320px;
+	}
+
+	.ia-container figure {
+		left: 20px;
+		width: 180px;
+	}
+
+	.ia-container input {
+		width: 20px;
+	}
+
+	.ia-container input:checked ~ figure {
+		left: 180px;
+	}
+
+	.ia-container figcaption span {
+		font-size: 12px;
+		letter-spacing: 2px;
+		padding: 10px;
+		margin-top: -20px;
+	}
+
+}
+
+
+@media (max-width:568px){
+
+    .pimg1, .pimg2, .pimg3{
+    background-attachment: scroll;
+  }
+}

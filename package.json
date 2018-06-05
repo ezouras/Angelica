@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ezouras/Angelica/issues"
   },
-  "homepage": "https://github.com/ezouras/Angelica#readme"
+  "homepage": "https://github.com/ezouras/Angelica#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }

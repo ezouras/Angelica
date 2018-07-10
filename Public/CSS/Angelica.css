@@ -11,21 +11,136 @@ body,html{
   color:#666;
 }
 
+.hide{
+  display:none;
+}
+#intro{
+  height:100%;
+  width:100%;
+  background-color: black;
+  border:3px solid pink;
+/*  background-image: linear-gradient();*/
+}
+#staticVideo{
+  height:100%;
+  width:100%;
+  border: 5px solid white;
+  border-radius: 100%;
+  opacity:1;
+  animation: fade 10s forwards;
+}
+@keyframes fade{
+    0%{
+      width: 200px;
+      height:200px;
+    }
+    80%{
+      width: 500px;
+      height:500px;
+    }
+    100%{
+      width: 1500px;
+      height:1500px;
+    }
+}
+
+.dot{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index:10;
+  border-radius: 100%;
+  border: 5px solid rgb(25, 242, 125);
+  width: 200px;
+  height:200px;
+  border: 1px solid black;
+  animation: growandshrink 10s forwards;
+}
+
+@keyframes growandshrink{
+    0%{
+      width: 200px;
+      height:200px;
+    }
+    80%{
+      width: 500px;
+      height:500px;
+    }
+    100%{
+      width: 1500px;
+      height:1500px;
+    }
+}
+
+#mainBlock{
+  height:100vh;
+}
+
+.darken-overlay::after{
+  content: "";
+  position:absolute;
+  display: block;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  animation: reveal 5s;
+}
+
+@keyframes reveal{
+0%{
+      background-color: rgba(0,0,0,1);
+
+  }
+50%{
+      background-color: rgba(0,0,0,.5);
+
+  }
+100%{
+        background-color: rgba(0,0,0,0);
+
+    }
+
+}
+
 .pimg1, .pimg2, .pimg3{
-  position: relative;
+  position: relative;/* position of the container is relative,
+  it simply moves as it should. */
   opacity: 0.70;
   background-position: center; /* center the image */
   background-size: cover; /*cover the entire space */
   background-repeat: no-repeat;
-  background-attachment: fixed; /* this is what makes it parallaxy*/
+  background-attachment: fixed;
+  /* this is what makes it parallaxy.  fixed is not absolute,
+  so the parent is not relavent. it willbe fixed to the viewport.
+  this is relative to the viewport. 
+  */
   /* for mobile devices, do background-attachment: scroll */
+  transition:opacity 12s;
+
 }
 
 .pimg1{
   background-image: url('./../Images/Photos/selfies/A-selfi-faded.jpg');
   min-height: 100%;
-
 }
+
+/*.darken-overlay:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  /*background-color: rgba(0, 0, 0, 1);*/
+  /*background-color: black;
+  color: black;
+}
+*/
+
+
 .pimg2{
     background-image: url('./../Images/Photos/random/a-birdInHand.jpg');
     min-height: 400px;

@@ -2,65 +2,82 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Angelica </title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script src="./JS/Angelica.js"
     <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
     <script src='http://use.edgefonts.net/astloch.js'></script>
     <script src='http://use.edgefonts.net/emilys-candy.js'></script>
     <link rel="stylesheet" href="./CSS/Angelica.css">
   </head>
   <body>
-    <!-- section 1 -->
-    <div class="pimg1">
-      <div class="ptext">
-        <span class="border">
-          Angelica
-        </span>
+
+    <!-- initial backdrop/intro -->
+    <div id="intro" class="darken-overlay hide">
+      <div class="dot">
+        <video autoplay muted loop id="staticVideo">
+          <source src="./VideoAndSound/tvstatic.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
       </div>
     </div>
+    <!-- main section of website - is hidden during intro -->
+    <div id="mainBlock">
+      <!-- section 1 -->
+      <div class="pimg1 darken-overlay"><!--first section in main --->
+        <div class="ptext">
+          <span class="border">
+            Angelica
+          </span>
+        </div>
+      </div>
 
-    <section class="section section-light">
-      <h2>PORT</h2>
-      <div class="ia-container">
-
-        <figure>
-          <img src="./Images/mkup/A-ClownGoneMad.jpg" alt="image01" />
-          <input type="radio" name="radio-set" checked="checked"/>
-          <figcaption><span>Sad Clown</span></figcaption>
+      <section class="section section-light">
+        <h2>PORT</h2>
+        <div class="ia-container">
 
           <figure>
-            <img src="./Images/mkup/A-mkup-buyEye.jpg" alt="image02" />
-            <input type="radio" name="radio-set" />
-            <figcaption><span>Bye Eye</span></figcaption>
+            <img src="./Images/mkup/A-ClownGoneMad.jpg" alt="image01" />
+            <input type="radio" name="radio-set" checked="checked"/>
+            <figcaption><span>Sad Clown</span></figcaption>
 
             <figure>
-              <img src="./Images/mkup/A-mkup-byeArm.jpg" alt="image03" />
+              <img src="./Images/mkup/A-mkup-buyEye.jpg" alt="image02" />
               <input type="radio" name="radio-set" />
-              <figcaption><span>Bad Arm</span></figcaption>
+              <figcaption><span>Bye Eye</span></figcaption>
 
               <figure>
-                <img src="./Images/mkup/A-mkup-byeFace.jpg" alt="image04" />
+                <img src="./Images/mkup/A-mkup-byeArm.jpg" alt="image03" />
                 <input type="radio" name="radio-set" />
-                <figcaption><span>Boom!</span></figcaption>
+                <figcaption><span>Bad Arm</span></figcaption>
 
                 <figure>
-                  <img src="./Images/mkup/A-mkup-smoking.jpg" alt="image05" />
+                  <img src="./Images/mkup/A-mkup-byeFace.jpg" alt="image04" />
                   <input type="radio" name="radio-set" />
-                  <figcaption><span>Drag</span></figcaption>
+                  <figcaption><span>Boom!</span></figcaption>
 
                   <figure>
-                    <img src="./Images/mkup/mkup-rebord.jpg" alt="image06" />
+                    <img src="./Images/mkup/A-mkup-smoking.jpg" alt="image05" />
                     <input type="radio" name="radio-set" />
-                    <figcaption><span>Reborn</span></figcaption>
+                    <figcaption><span>Drag</span></figcaption>
 
                     <figure>
-                      <img src="./Images/mkup/A-mu-freddie.jpg"  alt="image07" />
+                      <img src="./Images/mkup/mkup-rebord.jpg" alt="image06" />
                       <input type="radio" name="radio-set" />
-                      <figcaption><span>Freddie</span></figcaption>
+                      <figcaption><span>Reborn</span></figcaption>
 
                       <figure>
-                        <img src="./Images/mkup/A-mkup-handBone.jpg"  alt="image08" />
-                        <input id="ia-selector-last" type="radio" name="radio-set" />
-                        <figcaption><span>Hand Jive</span></figcaption>
+                        <img src="./Images/mkup/A-mu-freddie.jpg"  alt="image07" />
+                        <input type="radio" name="radio-set" />
+                        <figcaption><span>Freddie</span></figcaption>
+
+                        <figure>
+                          <img src="./Images/mkup/A-mkup-handBone.jpg"  alt="image08" />
+                          <input id="ia-selector-last" type="radio" name="radio-set" />
+                          <figcaption><span>Hand Jive</span></figcaption>
+                        </figure>
+
                       </figure>
 
                     </figure>
@@ -75,50 +92,49 @@
 
           </figure>
 
-        </figure>
+        </div><!-- ia-container -->
+        <h2>FOLIO</h2>
+      </section>
+      <!-- end section 1 -->
+      <!-- start section 2 -->
 
-      </div><!-- ia-container -->
-      <h2>FOLIO</h2>
-    </section>
-    <!-- end section 1 -->
-    <!-- start section 2 -->
-
-    <div class="pimg2">
-      <div class="ptext">
-        <span class="border trans">
-           Angelica section two
-        </span>
+      <div class="pimg2">
+        <div class="ptext">
+          <span class="border trans">
+             Angelica section two
+          </span>
+        </div>
       </div>
-    </div>
 
-    <section class="section section-dark">
-      <h2>Section Two</h2>
-      <p>This is section two This is some stuff about angelica and her art maybe start
-      with either some photographs of her grisley makeup stuff. this is the end of section </p>
-    </section>
+      <section class="section section-dark">
+        <h2>Section Two</h2>
+        <p>This is section two This is some stuff about angelica and her art maybe start
+        with either some photographs of her grisley makeup stuff. this is the end of section </p>
+      </section>
 
-  <!-- end section 2-->
-  <!-- start section 3 -->
+    <!-- end section 2-->
+    <!-- start section 3 -->
 
-    <div class="pimg3">
-      <div class="ptext">
-        <span class="border trans">
-          Angelica Section 3
-        </span>
+      <div class="pimg3">
+        <div class="ptext">
+          <span class="border trans">
+            Angelica Section 3
+          </span>
+        </div>
       </div>
-    </div>
-    <section class="section section-dark">
-      <h2>Section Three</h2>
-      <p>This is section 3. This is some stuff about angelica and her art maybe start
-      with either some photographs of her grisley makeup stuff. This is the end of section three.  </p>
-    </section>
-    <div class="pimg1">
-      <div class="ptext">
-        <span class="border">
-          Angelica
-        </span>
+      <section class="section section-dark">
+        <h2>Section Three</h2>
+        <p>This is section 3. This is some stuff about angelica and her art maybe start
+        with either some photographs of her grisley makeup stuff. This is the end of section three.  </p>
+      </section>
+      <div class="pimg1">
+        <div class="ptext">
+          <span class="border">
+            Angelica
+          </span>
+        </div>
       </div>
-    </div>
+  </div>
 
   </body>
 </html>

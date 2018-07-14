@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Angelica </title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
-    <script src="./JS/Angelica.js"
     <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
     <script src='http://use.edgefonts.net/astloch.js'></script>
     <script src='http://use.edgefonts.net/emilys-candy.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/Angelica.css">
+    <link rel="stylesheet" href="./CSS/Angelica-intro.css">
   </head>
   <body>
 
     <!-- initial backdrop/intro -->
-    <div id="intro" class="darken-overlay hide">
-      <div class="dot">
-        <video autoplay muted loop id="staticVideo">
-          <source src="./VideoAndSound/tvstatic.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
+    <div id="intro" class="">
+      <div id="container"></div>
+        <div class="clickTextContainer">
+          <span class="clickText">Click Anywhere</span>
+        </div>
+        <div class="iSeeYouContainer">
+          <p class="iSeeYou">I'm watching you...</p>
       </div>
     </div>
+
     <!-- main section of website - is hidden during intro -->
-    <div id="mainBlock">
+    <div id="mainBlock" class="hide">
       <!-- section 1 -->
-      <div class="pimg1 darken-overlay"><!--first section in main --->
+      <div class="pimg1"><!--first section in main --->
         <div class="ptext">
           <span class="border">
             Angelica
@@ -137,4 +140,7 @@
   </div>
 
   </body>
+  <script type="text/javascript" src="./JS/angelica-intro.js"></script>
+  <script type="text/javascript" src="./JS/TweenMax.min.js"></script>
+  <script type="text/javascript" src="./JS/delaunay.js"></script>
 </html>

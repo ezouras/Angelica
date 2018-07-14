@@ -1,0 +1,131 @@
+root:{
+  --container-height:1500px;
+  --container-width:1500px;
+}
+
+#intro{
+  /*height:100vh;
+  width:100vw;
+  background-color: rgba(0,0,0,.5);
+/*  background-image: linear-gradient();*/
+}
+
+
+canvas {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+}
+
+img {
+  position:absolute;
+  cursor: pointer;
+}
+
+#container {
+    position: absolute;
+    left:-10vw;
+    top:-10vw;
+    margin: auto;
+}
+
+.clickTextContainer{
+
+  cursor: pointer;
+  position: absolute;
+  white-space: nowrap;
+  top:5%;
+  left:50%;
+  transform: translate(-50%,20%);
+  text-align: center;
+}
+
+.clickText{
+  font-family: 'Nosifer', cursive;
+  font-size:3rem;
+  color:red;
+  opacity:0;
+  animation-name:fadeAndShake;
+  animation-delay:4s;
+  animation-duration: .25s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeAndShake {
+  0%{
+    opacity:0;
+  }
+  10%{
+    opacity:.5;
+  }
+  20%{
+    opacity:1;
+  }
+  30%{
+    opacity:.5;
+  }
+  40%{
+    opacity:0;
+  }
+
+  50%{
+    opacity:.5;
+
+  }
+  60%{
+    opacity:0;
+
+  }
+  70%{
+    opacity:.5;
+
+  }
+
+  80%{
+    opacity:1;
+
+  }
+  90%{
+    opacity:.5;
+
+  }
+  100%{
+    opacity:0;
+
+  }
+
+}
+
+.iSeeYouContainer{
+  font-family:sans-serif;
+  display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.iSeeYou{
+  font-size:2rem;
+  color:red;
+  white-space: nowrap;
+
+
+}
+.iSeeYouContainer::before{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  content:"";
+  background:black;
+  animation: type 3s steps(50) forwards;
+  animation-play-state: paused;
+}
+@keyframes type {
+    from {left: 0; }
+    to   {left: 1100px; }
+  }
+}

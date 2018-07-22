@@ -3,14 +3,6 @@ root:{
   --container-width:1500px;
 }
 
-#intro{
-  /*height:100vh;
-  width:100vw;
-  background-color: rgba(0,0,0,.5);
-/*  background-image: linear-gradient();*/
-}
-
-
 canvas {
   position: absolute;
   backface-visibility: hidden;
@@ -19,18 +11,10 @@ canvas {
     -ms-backface-visibility: hidden;
 }
 
-img {
+#intro img{
   position:absolute;
   cursor: pointer;
 }
-
-#container {
-    position: absolute;
-    left:-10vw;
-    top:-10vw;
-    margin: auto;
-}
-
 .clickTextContainer{
 
   cursor: pointer;
@@ -105,10 +89,19 @@ img {
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  animation: disapear 1.5s linear forwards;
+  animation-play-state: paused;
 }
+@keyframes disapear{
+  100%{
+          opacity:0;
+
+      }
+  }
+
 .iSeeYou{
   font-size:2rem;
-  color:red;
+  color:#A40000;
   white-space: nowrap;
 
 

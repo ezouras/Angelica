@@ -1,0 +1,126 @@
+#portfolio{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#port-banner{
+  background: #404040;/*#A40000;*/
+  color: #A40000;/*black;*/
+  text-align: center;
+  height:7rem;
+  line-height: 7rem;
+  font-size: 5rem;
+  opacity: 0.8;
+  transform: skewX(25deg);
+  margin-left: -2rem;
+  animation-name: growWidth;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
+}
+
+
+/*#portfolio:hover #port-banner{width:0;}*/
+
+
+#port-boxes-container{
+  position: absolute;
+  /* this acts as if its the
+  only thing in the container
+  intead
+  of being NEXT to the banner*/
+
+  height: 50%;
+  width: 75%;
+
+}
+
+.port-box-grid{
+      position:absolute;
+      height: 100%;
+      width:100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+#port-boxes-container .innerAbs{
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+}
+#inner-port-boxes{
+    z-index:99;
+  }
+
+  .box{
+    width: 25%;
+    /*height: 0%;*/
+    display:inline-block;
+  }
+  .b4{
+    background-color:	#580000;/*#B0B0B0;*/
+    animation-duration:1s;
+  }
+  .b3{
+    background-color:	#710000;/*#787878;*/
+    animation-duration:.75s;
+
+  }
+  .b2{
+      background-color:#8b0000;/*#404040;*/
+      animation-duration:.50s;
+
+  }
+  .b1{
+    background-color:#a40000;/*#181818;*/
+    animation-duration:.25s;
+  }
+  .bAnimate{
+    animation-timing-function: cubic-bezier(.49,.06,.35,.83);
+    animation-fill-mode: forwards;
+  }
+
+
+  /*#portfolio:hover #port-banner{width:0;}*/
+
+  @keyframes growHeight{
+      from{
+      height: 0%;
+      }
+      to{
+        height: 100%;
+      }
+  }
+  @keyframes shrinkHeight{
+    from{
+      height:100%;
+    }
+    to{
+      height:0%;
+    }
+  }
+
+  @keyframes growWidth {
+    from{
+      width:0%;
+      color:black;
+      opacity: 1;
+    }
+    to{
+      width:85%;
+      color:#A40000;
+    }
+  }
+
+  @keyframes shrinkWidth {
+    from{
+      width:85%;
+    }
+    to{
+      min-width:0%;
+      opacity:0;
+    }
+  }

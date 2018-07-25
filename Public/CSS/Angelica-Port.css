@@ -1,11 +1,13 @@
+
+
 .portfolio{
-  display:flex;
+  /*display:flex;
   align-items: center;
   justify-content: center;
+  */
 }
 
-
-.port-banner{
+.banner{
   text-align: center;
   height:7rem;
   line-height: 7rem;
@@ -14,10 +16,14 @@
   opacity: 1;
   transform: skewX(25deg);
   margin-left: -2rem;
+}
+
+.port-banner{
   animation-duration: 1s;
   animation-fill-mode: forwards;
 
 }
+
 
 #port-banner-makeup{
   background: #404040;
@@ -40,7 +46,7 @@
   intead
   of being NEXT to the banner*/
 
-  height: 65%;
+  height: 30rem;
   width: 65%;
 
 }
@@ -164,6 +170,56 @@
 
 
 
+  #about-contact-section{
+    flex-direction:column;
+  }
+
+  #port-banner-aboutMe{
+    background-color:rgba(64, 64, 64, .7);
+    white-space: normal;
+    width: 100%;
+    height:25%;
+    margin-top:3rem;
+    transform: scale(3);
+    opacity:0;
+  }
+
+  #port-banner-aboutMe.in-view{
+    animation: pop-in;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+
+  }
+
+  #port-banner-aboutMe p{
+    font-family:Oswald;
+    padding:1rem;
+    font-size:1.2rem;
+    line-height: 1.5rem;
+
+
+  }
+
+
+  #port-banner-contactMe{
+    background-color:rgba(164, 0, 0, .4);
+    margin-top: 5rem;
+    transform: scale(3);
+    opacity:0;
+
+  }
+
+  #port-banner-contactMe.in-view{
+    animation: pop-in;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+
+  }
+
+
+
 
   /*#portfolio:hover #port-banner{width:0;}*/
 
@@ -207,3 +263,17 @@
       color:black;
     }
   }
+
+
+
+    @keyframes pop-in{
+      0%{
+        opacity:1;
+
+      }
+      100%{
+        transform:scale(1);
+        opacity:1;
+      }
+
+    }

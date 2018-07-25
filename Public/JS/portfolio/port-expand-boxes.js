@@ -14,8 +14,20 @@ var currentOverlay;
 var lastMainBox;
 var lastAbsoluteBox;
 var lastOverlay;
+var $animation_elements=[];
+var $window;
 
 $(document).ready(function(){
+  //get banners that slide in when in view. slide out when out of view.
+  $animation_elements.push($("#port-banner-aboutMe"));
+  $animation_elements.push($("#port-banner-aboutMe").children());
+  $animation_elements.push($("#port-banner-contactMe"));
+  console.log($animation_elements);
+  $window=$(window);
+
+
+  $window.on('scroll', check_if_in_view);
+  $window.on('scroll resize', check_if_in_view);
 
   //animate portfolio banner//
   $(".portfolio").hover(()=>{
@@ -91,8 +103,8 @@ function setPostBackgroundColor(element){
 
 function animateGrow(element){
   $(element).animate({
-  width: "100%",
-  height:"120%"
+  width: "90%",
+  height:"90%"
   },
   300,
   $.bez([0.685, 0.595, 0.020, 0.720]));
@@ -102,7 +114,30 @@ function animateShrink(element){
   $(element).css( "border", "none");
        $("#"+lastMainBox).animate({
        width: "25%",
-       height:"100%"
+       height:"90%"
      }, 300);
 
+}
+
+function check_if_in_view(){
+
+  var window_height = $window.height();
+  var window_top_position = $window.scrollTop();
+  var window_bottom_position = (window_top_position + window_height);
+
+  $.each($animation_elements, function() {
+    var $element = $(this);
+    var element_height = $element.outerHeight();
+    var element_top_position = $element.offset().top;
+    var element_bottom_position = (element_top_position + element_height);
+
+    //check to see if this current container is within viewport
+    if ((element_bottom_position >= window_top_position) &&
+        (element_top_position <= window_bottom_position)) {
+      $element.addClass('in-view');
+    } else {
+      $element.removeClass('in-view');
+    }
+  });
+  ;
 }

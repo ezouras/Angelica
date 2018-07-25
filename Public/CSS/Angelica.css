@@ -81,6 +81,10 @@ body{
 .section{
   text-align: center;
   height:32rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
 }
 
 .section-dark{

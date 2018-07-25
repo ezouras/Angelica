@@ -1,39 +1,47 @@
-#portfolio{
+.portfolio{
   display:flex;
   align-items: center;
   justify-content: center;
 }
 
 
-#port-banner{
-  background: #404040;/*#A40000;*/
-  color: #A40000;/*black;*/
+.port-banner{
   text-align: center;
   height:7rem;
   line-height: 7rem;
   font-size: 5rem;
-  opacity: 0.8;
+  width:85%;
+  opacity: 1;
   transform: skewX(25deg);
   margin-left: -2rem;
-  animation-name: growWidth;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 
+}
+
+#port-banner-makeup{
+  background: #404040;
+  color: #A40000;
+}
+
+#port-banner-photo{
+  color: #404040;
+  background: #A40000;
 }
 
 
 /*#portfolio:hover #port-banner{width:0;}*/
 
 
-#port-boxes-container{
+.port-boxes-container{
   position: absolute;
   /* this acts as if its the
   only thing in the container
   intead
   of being NEXT to the banner*/
 
-  height: 50%;
-  width: 75%;
+  height: 65%;
+  width: 65%;
 
 }
 
@@ -44,44 +52,117 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index:99;
 }
 
-#port-boxes-container .innerAbs{
+.port-boxes-container .innerAbs{
   position: absolute;
   z-index: 100;
   opacity: 0;
 }
-#inner-port-boxes{
+/*#inner-port-boxes{
     z-index:99;
   }
+  */
 
   .box{
     width: 25%;
     /*height: 0%;*/
     display:inline-block;
   }
-  .b4{
-    background-color:	#580000;/*#B0B0B0;*/
+  .bInner{
+      width: 25%;
+      height:100%;
+      display:inline-block;
+      opacity: 0;
+      cursor: pointer;
+  }
+  .port-overlay{
+      position:absolute;
+      top:0;
+      left:0;
+      content: "";
+      width:100%;
+      height:100%;
+    }
+
+  #b4-layer-mkup{
+    background-color:rgba(88, 0, 0, .8);
+  }
+
+
+  #b4-mkup{
+    background-image: url("./../Images/mkup/A-ClownGoneMad.jpg");
     animation-duration:1s;
   }
-  .b3{
-    background-color:	#710000;/*#787878;*/
+
+  #b4-layer-photo{
+    background-color:rgb(64,64,64,.8);;
+  }
+
+  #b4-photo{
+    background-image: url("./../Images/mkup/A-ClownGoneMad.jpg");
+    animation-duration:1s;
+  }
+
+  #b3-mkup{
+    background-image: url("./../Images/mkup/A-mkup-buyEye.jpg");
     animation-duration:.75s;
-
   }
-  .b2{
-      background-color:#8b0000;/*#404040;*/
+  #b3-layer-mkup{
+    background-color:rgb(164, 0, 0,.8);
+  }
+
+  #b3-photo{
+    background-image: url("./../Images/mkup/A-mkup-buyEye.jpg");
+    animation-duration:.75s;
+  }
+  #b3-layer-photo{
+    background-color:rgb(80,80,80,.8);;
+  }
+
+
+  #b2-mkup{
       animation-duration:.50s;
+      background-image: url("./../Images/mkup/A-mkup-byeArm.jpg");
+  }
+  #b2-layer-mkup{
+    background-color:rgb(139, 0, 0,.8);
+  }
+  #b2-photo{
+      animation-duration:.50s;
+      background-image: url("./../Images/mkup/A-mkup-byeArm.jpg");
+  }
+  #b2-layer-photo{
+    background-color:rgb(64,64,64,.8);
+  }
 
-  }
-  .b1{
-    background-color:#a40000;/*#181818;*/
+  #b1-mkup{
     animation-duration:.25s;
+    background-image: url("./../Images/mkup/A-mkup-byeFace.jpg");
   }
+  #b1-layer-mkup{
+    background-color:rgb(164, 0, 0,.8);
+  }
+
+  #b1-photo{
+    animation-duration:.25s;
+    background-image: url("./../Images/mkup/A-mkup-byeFace.jpg");
+  }
+  #b1-layer-photo{
+    background-color:rgb(80,80,80,.8);
+  }
+
   .bAnimate{
     animation-timing-function: cubic-bezier(.49,.06,.35,.83);
     animation-fill-mode: forwards;
+    position:relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
+
+
 
 
   /*#portfolio:hover #port-banner{width:0;}*/
@@ -103,24 +184,26 @@
     }
   }
 
-  @keyframes growWidth {
+  @keyframes growWidth{
     from{
       width:0%;
-      color:black;
-      opacity: 1;
+      font-size:0px;
+      /*color:black;*/
+      /*opacity: 1;*/
     }
     to{
       width:85%;
-      color:#A40000;
+      font-size:5rem;
+      /*color:#A40000;*/
     }
   }
 
-  @keyframes shrinkWidth {
+  @keyframes shrinkWidth{
     from{
       width:85%;
     }
     to{
-      min-width:0%;
-      opacity:0;
+      width:0px;
+      color:black;
     }
   }

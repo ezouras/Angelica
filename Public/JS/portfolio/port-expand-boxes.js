@@ -56,6 +56,10 @@ $(document).ready(function(){
   setPostBackgroundColor("#"+lastOverlay);
  });
 
+ $("#port-banner-contactMe").click(()=>{
+   window.location = "/contact";
+ });
+
 });//end jquery
 
 function getBoxId(boxElement){

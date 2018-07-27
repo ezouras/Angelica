@@ -162,20 +162,20 @@ function shatterCompleteHandler() {
     indices.length = 0;
 
 
-    $( ".iSeeYouContainer").css("display","inline");
-    $('.iSeeYouContainer').append('<style>.iSeeYouContainer::before{animation-play-state:running !important;}</style>');
-    //animation lasts 3 seconds. wait 3 s then fade out
-    setTimeout(function(){
-      $( ".iSeeYouContainer").css("animation-play-state","running");
-    },1000);
+        $( ".iSeeYouContainer").css("display","inline");
+        $('.iSeeYouContainer').append('<style>.iSeeYouContainer::before{animation-play-state:running !important;}</style>');
+        //animation lasts 3 seconds. wait 3 s then fade out
+        setTimeout(function(){
+          $( ".iSeeYouContainer").css("animation-play-state","running");
+        },1000);
 
-    //animation + fade out is 5 seconds minus some time to reveal itself.
-    setTimeout(function(){
-          $( "#intro" ).addClass( "hide" );
-          $("#mainBlock").removeClass("hide");
-          $('body').css("overflow","visible");
-          $('.pimg1').css('animation-play-state','running');
-    },1050);
+        //animation + fade out is 5 seconds minus some time to reveal itself.
+        setTimeout(function(){
+              $( "#intro" ).addClass( "hide" );
+              $("#mainBlock").removeClass("hide");
+              $('body').css("overflow","visible");
+              $('.pimg1').css('animation-play-state','running');
+        },1550);
 
 
 

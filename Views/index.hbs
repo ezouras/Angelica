@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Angelica </title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script src='http://use.edgefonts.net/emilys-candy.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/Angelica.css">
+    <link rel="stylesheet" href="./CSS/Angelica-Port.css">
+  </head>
+  {{#if playIntro}}
+    <body class="intro">
+    {{>intro}}
+  {{else}}
+    <body class="nointro">
+    {{>nointro}}
+  {{/if}}
+      <!-- section 1 -->
+      {{#if playIntro}}
+        <div class="pimg1"><!--first section in main --->
+      {{else}}
+        <div class="pimg1-nointro"><!--first section in main --->
+      {{/if}}
+        <div class="ptext">
+          <span class="border">
+            Angelica
+          </span>
+        </div>
+      </div>
+      <section class="section portfolio" id="makeup">
+          <div class="port-banner banner" id="port-banner-makeup">MAKEUP</div>
+          <div class="port-boxes-container">
+            <div class="port-box-grid" id="inner-port-boxes">
+              <div class="box bAnimate" id="b1-mkup">
+                    <div id="b1-layer-mkup" class="port-overlay"></div>
+              </div>
+              <div class="box bAnimate" id="b2-mkup">
+                  <div id="b2-layer-mkup" class="port-overlay"></div>
+              </div>
+              <div class="box bAnimate" id="b3-mkup">
+                  <div id="b3-layer-mkup" class="port-overlay"></div>
+              </div>
+              <div class="box bAnimate" id="b4-mkup">
+                <div id="b4-layer-mkup" class="port-overlay"></div>
+              </div>
+            </div>
+            <div class="port-box-grid innerAbs">
+              <div class="box bInner" id="innerAbMU-1"></div>
+              <div class="box bInner" id="innerAbMU-2"></div>
+              <div class="box bInner" id="innerAbMU-3"></div>
+              <div class="box bInner" id="innerAbMU-4"></div>
+            </div>
+          </div>
+        </section>
+      <!-- end section 1 -->
+      <!-- start section 2 -->
+
+      <div class="pimg2">
+        <div class="ptext">
+
+        </div>
+      </div>
+
+<!--start section 3-->
+<section class="section portfolio" id="photo">
+    <div class="port-banner banner" id="port-banner-photo">PHOTOGRAPHY</div>
+    <div class="port-boxes-container">
+      <div class="port-box-grid" id="inner-port-boxes">
+        <div class="box bAnimate" id="b1-photo">
+              <div id="b1-layer-photo" class="port-overlay"></div>
+        </div>
+        <div class="box bAnimate" id="b2-photo">
+            <div id="b2-layer-photo" class="port-overlay"></div>
+        </div>
+        <div class="box bAnimate" id="b3-photo">
+            <div id="b3-layer-photo" class="port-overlay"></div>
+        </div>
+        <div class="box bAnimate" id="b4-photo">
+          <div id="b4-layer-photo" class="port-overlay"></div>
+        </div>
+      </div>
+      <div class="port-box-grid innerAbs">
+        <div class="box bInner" id="innerAbPH-1"></div>
+        <div class="box bInner" id="innerAbPH-2"></div>
+        <div class="box bInner" id="innerAbPH-3"></div>
+        <div class="box bInner" id="innerAbPH-4"></div>
+      </div>
+    </div>
+  </section>
+
+    <!-- end section 2-->
+    <!-- start section 3 -->
+
+      <div class="pimg3">
+        <div class="ptext">
+
+        </div>
+      </div>
+      <section class="section section-dark" id="about-contact-section">
+        <div id="port-banner-aboutMe">
+            <p>Here will be the confessions of a scary makeup artest
+               and her love for dripping blood and melting skin as well
+               as any other interesting vices.Here will be the confessions
+               of a scary makeup artest and her love for dripping blood
+               and melting skin as well as any other interesting vices.
+            </p>
+        </div>
+          <div class="banner" id="port-banner-contactMe">
+            Contact
+          </div>
+    </section>
+
+
+      {{#if playIntro}}
+        <div class="pimg1"><!--first section in main --->
+      {{else}}
+        <div class="pimg1-nointro"><!--first section in main --->
+      {{/if}}
+        <div class="ptext">
+          <span class="border">
+            Angelica
+          </span>
+        </div>
+      </div>
+  </div>
+  </body>
+  <script type="text/javascript" src="./JS/delaunay.js"></script>
+  <script type="text/javascript" src="./JS/portfolio/bezPlugin.js"></script>
+  <script type="text/javascript" src="./JS/portfolio/port-expand-boxes.js"></script>
+  <link rel="stylesheet" href="./CSS/Angelica-intro.css">
+  {{#if playIntro}}
+    <script type="text/javascript" src="./JS/angelica-intro.js"></script>
+    <script type="text/javascript" src="./JS/TweenMax.min.js"></script>
+    <link rel="stylesheet" href="./CSS/Angelica-intro.css">
+  {{/if}}
+</html>

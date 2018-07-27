@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script src='http://use.edgefonts.net/emilys-candy.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/Angelica.css">
+    <link rel="stylesheet" href="./CSS/Angelica-Port.css">
+    <link rel="stylesheet" href="./CSS/Angelica-contact.css">
+  </head>
+  <body>
+    <main id="contact-page">
+    <div class="banner" id="port-banner-message">Message</div>
+    <div class="contact-fill">
+    <!--<form action="index.html" method="POST">-->
+        <form action="contact" method="POST">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" required/>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" required/>
+          <label>Message:</label>
+          <textarea type="text" id="message" name="message" required ></textarea>
+          <button type="submit" value="submit" class="submitButton" disabled>SUBMIT</button>
+      </form>
+    </div>
+    </div>
+  </main>
+</body>
+<script src="./JS/angelica-contact.js"  type="text/javascript">
+
+</script>
+</html>

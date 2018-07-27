@@ -1,7 +1,8 @@
-root:{
+/*root:{
   --container-height:1500px;
   --container-width:1500px;
 }
+*/
 
 canvas {
   position: absolute;
@@ -16,7 +17,6 @@ canvas {
   cursor: pointer;
 }
 .clickTextContainer{
-
   cursor: pointer;
   position: absolute;
   white-space: nowrap;
@@ -82,14 +82,16 @@ canvas {
 
 }
 
+
 .iSeeYouContainer{
+  white-space:nowrap;
   font-family:sans-serif;
   display:none;
   position:absolute;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-  animation: disapear 1.5s linear forwards;
+  animation: disapear 3s linear forwards;
   animation-play-state: paused;
 }
 @keyframes disapear{
@@ -121,4 +123,5 @@ canvas {
     from {left: 0; }
     to   {left: 1100px; }
   }
+
 }

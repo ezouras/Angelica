@@ -23,7 +23,12 @@ body{
   line-height: 1.8em;
   background-color: #000;
   color:#A40000;
+}
+body .intro{
   overflow: hidden;
+}
+body .nointro{
+  overflow: visible;
 }
 
 .hide{
@@ -42,7 +47,7 @@ body{
 
   }
 
-.pimg1, .pimg2, .pimg3{
+.pimg1, .pimg2, .pimg3, .pimg1-nointro{
   position: relative;/* position of the container is relative,
   it simply moves as it should. */
   opacity: 0.70;
@@ -65,6 +70,12 @@ body{
   opacity: 0;
   animation: reveal 2s forwards;
   animation-play-state: paused;
+}
+
+.pimg1-nointro{
+  background-image: url('./../Images/Photos/selfies/A-selfi-faded.jpg');
+  min-height: 100%;
+  opacity: 1;
 }
 
 

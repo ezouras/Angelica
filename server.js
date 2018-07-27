@@ -16,8 +16,8 @@ const port = process.env.PORT || 3000;
 
 console.log("play intro is: ",playIntro);
 app.set("view engine",'hbs')
-app.use(express.static(__dirname + '/Public'));;
-hbs.registerPartials(__dirname+"/Views/partials");
+app.use(express.static(__dirname + '/public'));;
+hbs.registerPartials(__dirname+"/views/partials");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 

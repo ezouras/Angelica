@@ -17,29 +17,64 @@ var lastOverlay;
 var $animation_elements=[];
 var $window;
 
+
 $(document).ready(function(){
   //get banners that slide in when in view. slide out when out of view.
   $animation_elements.push($("#port-banner-aboutMe"));
   $animation_elements.push($("#port-banner-aboutMe").children());
   $animation_elements.push($("#port-banner-contactMe"));
-  console.log($animation_elements);
   $window=$(window);
 
 
   $window.on('scroll', check_if_in_view);
   $window.on('scroll resize', check_if_in_view);
+  resetBoxVisibility();
 
-  //animate portfolio banner//
-  $(".portfolio").hover(()=>{
-    $(".port-banner").css("animation-name","shrinkWidth");
-    $(".bAnimate").css("animation-name","growHeight");
-  },()=>{
-      $(".port-banner").css("animation-name","growWidth");
-    $(".bAnimate").css("animation-name","shrinkHeight")
+
+  //swap portfolio banner for box samples on hover - makeup//
+  $("#makeup").hover(()=>{
+    animatePortBannerHover(false,"port-banner-makeup","shrinkWidth");
+    if ($window.width() <= 812){
+      animatePortBannerHover(true,"bAnimate-mkup","growWidth");
+    }
+    else{
+    animatePortBannerHover(true,"bAnimate-mkup","growHeight");
+    }
+  },
+  ()=>{
+    animatePortBannerHover(false,"port-banner-makeup","growWidth");
+    if ($window.width() <= 812){
+      animatePortBannerHover(true,"bAnimate-mkup","shrinkWidth");
+    }
+    else{
+      animatePortBannerHover(true,"bAnimate-mkup","shrinkHeight");
+    }
   });
 
+
+  //swap portfolio banner for box samples on hover - photo section//
+  $("#photo").hover(()=>{
+    animatePortBannerHover(false,"port-banner-photo","shrinkWidth");
+    if ($window.width() <= 812){
+      animatePortBannerHover(true,"bAnimate-photo","growWidth");
+    }
+    else{
+    animatePortBannerHover(true,"bAnimate-photo","growHeight");
+    }
+  },
+  ()=>{
+    animatePortBannerHover(false,"port-banner-photo","growWidth");
+    if ($window.width() <= 812){
+      animatePortBannerHover(true,"bAnimate-photo","shrinkWidth");
+    }
+    else{
+      animatePortBannerHover(true,"bAnimate-photo","shrinkHeight");
+    }
+  });
+
+  /* animate and make sample larger upon hover */
   $( ".bInner" ).mouseenter(function(e){
-    var boxID=getBoxId(this);
+    var boxID=getId(this);
     setBoxValues(boxID,"current");
     setPreBackgroundColor(currentOverlay);
     $("#" +currentMainBox).css( "border", "1px solid red" );
@@ -47,9 +82,9 @@ $(document).ready(function(){
     $("#"+currentOverlay).css( "background-color", "rgba(88, 0, 0, .2)");
   });
 
-
+/* make box sample smaller when hover leave */
  $( ".bInner" ).mouseleave(function(e){
-  var boxID=getBoxId(this);
+  var boxID=getId(this);
   setBoxValues(boxID,"last");
   $("#"+lastMainBox).css( "border", "none");
   animateShrink("#"+lastMainBox);
@@ -62,8 +97,36 @@ $(document).ready(function(){
 
 });//end jquery
 
-function getBoxId(boxElement){
-  return $(boxElement).attr('id');
+function isMkup(string){
+  if(string===mkupMainBoxPostText)
+  return true;
+  else {
+    return false;
+  }
+}
+
+function animatePortBannerHover(isClass,port,animationName){
+  var elementString;
+  if(isClass){
+    $('.'+port).css("animation-name",animationName);
+  }
+  else{
+  $("#"+port).css("animation-name",animationName);
+  }
+
+}
+
+function resetBoxVisibility(){
+if ($window.width() <= 812){
+    $(".bAnimate").css("animation-name","shrinkWidth");
+  }
+  else{
+    $(".bAnimate").css("animation-name","shrinkHeight");
+  }
+}
+
+function getId(element){
+  return $(element).attr('id');
 }
 
 function setBoxValues(innerMainBoxID,timing){
@@ -112,16 +175,33 @@ function animateGrow(element){
   },
   300,
   $.bez([0.685, 0.595, 0.020, 0.720]));
+$(".bAnimate").css("background-size","100% 100%");
 }
+
 
 function animateShrink(element){
-  $(element).css( "border", "none");
-       $("#"+lastMainBox).animate({
-       width: "25%",
-       height:"90%"
-     }, 300);
+  if ($window.width() <= 812){
+    $(element).css( "border", "none");
+         $("#"+lastMainBox).animate({
+         width: "90%",
+         height:"10%"
+       }, 300);
+
+  }
+  else{
+
+    $(element).css( "border", "none");
+         $("#"+lastMainBox).animate({
+         width: "25%",
+         height:"90%"
+       }, 300);
+
+  }
+
+  $(".bAnimate").css("background-size","cover");
 
 }
+
 
 function check_if_in_view(){
 

@@ -1,6 +1,7 @@
 
 
 .portfolio{
+  position:relative;
   /*display:flex;
   align-items: center;
   justify-content: center;
@@ -276,5 +277,22 @@
         transform:scale(1);
         opacity:1;
       }
+
+    }
+
+    /* media queries */
+    @media (max-width:812px){
+      .port-box-grid{
+        flex-direction:column;
+      }
+      .port-boxes-container{
+        height:90%;
+        width:90%;
+      }
+      .box{
+        height: 10%;
+        width: 90%;
+      }
+
 
     }

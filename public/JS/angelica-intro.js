@@ -2,7 +2,6 @@ const TWO_PI = Math.PI * 2;
 var oneImage='./Images/Photos/mirrors/Selfi-eyewhites.jpg';
 var image=new Image();
 image.src = oneImage;
-console.log("image is:",image);
 var clickPosition=[2];
 var vertices = [],
     indices = [],
@@ -11,11 +10,12 @@ var imageWidth, imageHeight;
 var container;
 // triangulation using https://github.com/ironwallaby/delaunay
 $(document).ready(function() {
-  updateImageSize();
-    window.addEventListener("resize", updateImageSize);
+
 
     //updateImageSize();
     container= document.getElementById('container');
+    window.addEventListener("resize", updateImageSize);
+    updateImageSize();
     TweenMax.set(container, {perspective:500});
     container.appendChild(image);
     clickPosition=[imageWidth * .5, imageHeight * .5];
@@ -38,11 +38,16 @@ function imagesLoaded() {
 
 function updateImageSize(event){
   //console.log("in update image isze");
-  /*image.height=$( window ).height();
+  image.height=$( window ).height();
   image.width=$( window ).width();
   imageHeight= image.height;
   imageWidth= image.width;
-  clickPosition=[imageWidth * .5, imageHeight * .5];
+  $(container).css("height",imageHeight);
+  $(container).css("width",imageWidth);
+
+  //container.height=image.height;
+  //container.width=image.width;
+  /*clickPosition=[imageWidth * .5, imageHeight * .5];
   */
 
 
@@ -93,6 +98,7 @@ function triangulate() {
         var radius = ring.r,
             count = ring.c,
             variance = radius * 0.25;
+            //variance=radius * 0.05;
 
         for (var i = 0; i < count; i++) {
             x = Math.cos((i / count) * TWO_PI) * radius + centerX + randomRange(-variance, variance);
@@ -252,6 +258,7 @@ Fragment.prototype = {
         this.ctx.lineTo(this.v2[0], this.v2[1]);
         this.ctx.closePath();
         this.ctx.clip();
-        this.ctx.drawImage(image, 0, 0);
+        //this.ctx.drawImage(image, 0, 0);
+        this.ctx.drawImage(image,0,0,imageWidth,imageHeight);
     }
 };

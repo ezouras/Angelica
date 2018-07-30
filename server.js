@@ -14,7 +14,6 @@ resetContactButtons();
 const port = process.env.PORT || 3000;
 //const indexFile=path.join(__dirname + '/Public/Index.html');
 
-console.log("play intro is: ",playIntro);
 app.set("view engine",'hbs')
 app.use(express.static(__dirname + '/public'));;
 hbs.registerPartials(__dirname+"/views/partials");
@@ -25,7 +24,6 @@ app.use(bodyParser.json());
 app.get('/', function(request, response) {
   playIntro=true;
 //response.sendFile(indexFile);
-console.log("in get /");
  response.render('index.hbs', {
    playIntro
  });

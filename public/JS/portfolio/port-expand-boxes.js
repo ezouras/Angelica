@@ -30,11 +30,14 @@ $(document).ready(function(){
   $window.on('scroll resize', check_if_in_view);
   resetBoxVisibility();
 
+/*
+    @media only screen and (max-width:1030px) and (max-height:1400px)
+    */
 
   //swap portfolio banner for box samples on hover - makeup//
   $("#makeup").hover(()=>{
     animatePortBannerHover(false,"port-banner-makeup","shrinkWidth");
-    if ($window.width() <= 812){
+    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
       animatePortBannerHover(true,"bAnimate-mkup","growWidth");
     }
     else{
@@ -43,7 +46,7 @@ $(document).ready(function(){
   },
   ()=>{
     animatePortBannerHover(false,"port-banner-makeup","growWidth");
-    if ($window.width() <= 812){
+    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
       animatePortBannerHover(true,"bAnimate-mkup","shrinkWidth");
     }
     else{
@@ -55,7 +58,7 @@ $(document).ready(function(){
   //swap portfolio banner for box samples on hover - photo section//
   $("#photo").hover(()=>{
     animatePortBannerHover(false,"port-banner-photo","shrinkWidth");
-    if ($window.width() <= 812){
+    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
       animatePortBannerHover(true,"bAnimate-photo","growWidth");
     }
     else{
@@ -64,7 +67,7 @@ $(document).ready(function(){
   },
   ()=>{
     animatePortBannerHover(false,"port-banner-photo","growWidth");
-    if ($window.width() <= 812){
+    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
       animatePortBannerHover(true,"bAnimate-photo","shrinkWidth");
     }
     else{
@@ -117,7 +120,7 @@ function animatePortBannerHover(isClass,port,animationName){
 }
 
 function resetBoxVisibility(){
-if ($window.width() <= 812){
+if ( $window.width() <= 1030 &&  $window.height() <= 1400){
     $(".bAnimate").css("animation-name","shrinkWidth");
   }
   else{
@@ -180,7 +183,7 @@ $(".bAnimate").css("background-size","100% 100%");
 
 
 function animateShrink(element){
-  if ($window.width() <= 812){
+  if ( $window.width() <= 1030 &&  $window.height() <= 1400){
     $(element).css( "border", "none");
          $("#"+lastMainBox).animate({
          width: "90%",

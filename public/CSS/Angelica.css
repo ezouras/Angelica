@@ -149,6 +149,8 @@ body .nointro{
   .pimg1-nointro, .pimg1{
     background-position:0% 0%;
   }
+
+
 }
 
 @media only screen and (min-width:650px) and (max-height:400px) and (orientation : landscape)

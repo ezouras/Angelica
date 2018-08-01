@@ -16,83 +16,36 @@ var lastAbsoluteBox;
 var lastOverlay;
 var $animation_elements=[];
 var $window;
+var wideScreen=true;
+var makeup="makeup";
+var photo="photo"
+var bannerPhotoId="port-banner-photo";
+var boxPhotoClass="bAnimate-photo";
+var bannerMakeupId="port-banner-makeup";
+var boxMkupClass="bAnimate-mkup";
+var boxesGrown=false;
 
 
 $(document).ready(function(){
-  //get banners that slide in when in view. slide out when out of view.
-  $animation_elements.push($("#port-banner-aboutMe"));
-  $animation_elements.push($("#port-banner-aboutMe").children());
-  $animation_elements.push($("#port-banner-contactMe"));
+
+  $animation_elements.push({element:$("#port-banner-contactMe"),isSection:false});
+  $animation_elements.push({element:$("#port-banner-aboutMe"),isSection:false});
   $window=$(window);
-
-
   $window.on('scroll', check_if_in_view);
   $window.on('scroll resize', check_if_in_view);
   resetBoxVisibility();
+  if($window.width()<850)
+  wideScreen=false;
 
-/*
-    @media only screen and (max-width:1030px) and (max-height:1400px)
-    */
-
-  //swap portfolio banner for box samples on hover - makeup//
-  $("#makeup").hover(()=>{
-    animatePortBannerHover(false,"port-banner-makeup","shrinkWidth");
-    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
-      animatePortBannerHover(true,"bAnimate-mkup","growWidth");
-    }
-    else{
-    animatePortBannerHover(true,"bAnimate-mkup","growHeight");
-    }
-  },
-  ()=>{
-    animatePortBannerHover(false,"port-banner-makeup","growWidth");
-    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
-      animatePortBannerHover(true,"bAnimate-mkup","shrinkWidth");
-    }
-    else{
-      animatePortBannerHover(true,"bAnimate-mkup","shrinkHeight");
-    }
-  });
-
-
-  //swap portfolio banner for box samples on hover - photo section//
-  $("#photo").hover(()=>{
-    animatePortBannerHover(false,"port-banner-photo","shrinkWidth");
-    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
-      animatePortBannerHover(true,"bAnimate-photo","growWidth");
-    }
-    else{
-    animatePortBannerHover(true,"bAnimate-photo","growHeight");
-    }
-  },
-  ()=>{
-    animatePortBannerHover(false,"port-banner-photo","growWidth");
-    if ( $window.width() <= 1030 &&  $window.height() <= 1400){
-      animatePortBannerHover(true,"bAnimate-photo","shrinkWidth");
-    }
-    else{
-      animatePortBannerHover(true,"bAnimate-photo","shrinkHeight");
-    }
-  });
-
-  /* animate and make sample larger upon hover */
-  $( ".bInner" ).mouseenter(function(e){
-    var boxID=getId(this);
-    setBoxValues(boxID,"current");
-    setPreBackgroundColor(currentOverlay);
-    $("#" +currentMainBox).css( "border", "1px solid red" );
-    animateGrow("#"+currentMainBox);
-    $("#"+currentOverlay).css( "background-color", "rgba(88, 0, 0, .2)");
-  });
-
-/* make box sample smaller when hover leave */
- $( ".bInner" ).mouseleave(function(e){
-  var boxID=getId(this);
-  setBoxValues(boxID,"last");
-  $("#"+lastMainBox).css( "border", "none");
-  animateShrink("#"+lastMainBox);
-  setPostBackgroundColor("#"+lastOverlay);
- });
+/* are you on a device?*/
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  $animation_elements.push({element:$("#makeup"),isSection:true});
+  $animation_elements.push({element:$("#photo"),isSection:true});
+    activateClick();
+}
+else{
+  activateHover();
+}
 
  $("#port-banner-contactMe").click(()=>{
    window.location = "/contact";
@@ -100,27 +53,87 @@ $(document).ready(function(){
 
 });//end jquery
 
-function isMkup(string){
-  if(string===mkupMainBoxPostText)
-  return true;
-  else {
-    return false;
-  }
+
+function activateHover(){
+  //swap portfolio banner for box samples on hover - makeup//
+  $("#makeup").hover(()=>{
+    growBoxes(makeup);
+  },()=>{
+    shrinkBoxes(makeup);
+  });
+  //swap portfolio banner for box samples on hover - photo section//
+  $("#photo").hover(()=>{
+    growBoxes(photo);
+  },()=>{
+    shrinkBoxes(photo);
+  });
+    /* animate and make sample larger upon hover */
+  $( ".bInner" ).mouseenter(function(e){
+      setBoxValues(getId(this),"current");
+      growSingleBox(getId(this));
+  });
+  /* make box sample smaller when hover leave */
+   $( ".bInner" ).mouseleave(function(e){
+     setBoxValues(getId(this),"last");
+     shrinkSingleBox(getId(this));
+   });
 }
 
-function animatePortBannerHover(isClass,port,animationName){
-  var elementString;
-  if(isClass){
-    $('.'+port).css("animation-name",animationName);
-  }
-  else{
-  $("#"+port).css("animation-name",animationName);
-  }
+function activateClick(){
+  $(".bInner").click((e)=>{
+    //shrinkSingleBox(lastMainBox)
+    setBoxValues(getId(e.target),"current");
+    growSingleBox(getId(e.target));
+    shrinkSingleBox(getId(lastMainBox));
+    setBoxValues(getId(e.target),"last");
+  });
+
+
+};
+
+
+function shrinkSingleBox(boxId){
+  //setBoxValues(boxId,"last");
+  $("#"+lastMainBox).css( "border", "none");
+  animateShrink("#"+lastMainBox);
+  setPostBackgroundColor("#"+lastOverlay);
+}
+
+function growSingleBox(boxId){
+  //setBoxValues(boxId,"current");
+  setPreBackgroundColor(currentOverlay);
+  $("#" +currentMainBox).css( "border", "1px solid red" );
+  animateGrow("#"+currentMainBox);
+  $("#"+currentOverlay).css( "background-color", "rgba(0,0,0,0)");
 
 }
+
+function growBoxes(makeupOrPhoto){
+    $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","growHeight");
+    $("#"+setBannerIDBoxClass(makeupOrPhoto).bannerId).css("animation-name","shrinkWidth");
+    $(".bInner-"+makeupOrPhoto).css("display","inline-block");
+}
+
+
+
+function shrinkBoxes(makeupOrPhoto){
+  $("#"+setBannerIDBoxClass(makeupOrPhoto).bannerId).css("animation-name","growWidth");
+  $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","shrinkHeight");
+  $(".bInner-"+makeupOrPhoto).css("display","none");
+
+}
+
+
+function setBannerIDBoxClass(makeupOrPhoto){
+  if(makeupOrPhoto===makeup){
+    return{bannerId:bannerMakeupId,boxClass:boxMkupClass};
+  }
+  return {bannerId:bannerPhotoId,boxClass:boxPhotoClass};
+}
+
 
 function resetBoxVisibility(){
-if ( $window.width() <= 1030 &&  $window.height() <= 1400){
+if ( !wideScreen){
     $(".bAnimate").css("animation-name","shrinkWidth");
   }
   else{
@@ -183,7 +196,7 @@ $(".bAnimate").css("background-size","100% 100%");
 
 
 function animateShrink(element){
-  if ( $window.width() <= 1030 &&  $window.height() <= 1400){
+  /*if ( $window.width() <= 1030 &&  $window.height() <= 1400){
     $(element).css( "border", "none");
          $("#"+lastMainBox).animate({
          width: "90%",
@@ -192,39 +205,49 @@ function animateShrink(element){
 
   }
   else{
+  */
 
     $(element).css( "border", "none");
-         $("#"+lastMainBox).animate({
+    $("#"+lastMainBox).animate({
          width: "25%",
          height:"90%"
        }, 300);
 
+    $(".bAnimate").css("background-size","cover");
+
   }
-
-  $(".bAnimate").css("background-size","cover");
-
-}
 
 
 function check_if_in_view(){
-
   var window_height = $window.height();
   var window_top_position = $window.scrollTop();
   var window_bottom_position = (window_top_position + window_height);
 
   $.each($animation_elements, function() {
-    var $element = $(this);
+    var $element = $(this.element);
     var element_height = $element.outerHeight();
     var element_top_position = $element.offset().top;
     var element_bottom_position = (element_top_position + element_height);
 
     //check to see if this current container is within viewport
-    if ((element_bottom_position >= window_top_position) &&
-        (element_top_position <= window_bottom_position)) {
-      $element.addClass('in-view');
-    } else {
-      $element.removeClass('in-view');
+    if(this.isSection)
+    {
+      if((element_top_position>window_top_position)&&
+          (element_bottom_position < window_bottom_position)){
+            growBoxes(getId($element));
+          }
+      else{
+        shrinkBoxes(getId($element));
+      }
     }
-  });
-  ;
+    else{
+      if ((element_bottom_position >= window_top_position) &&
+          (element_top_position <= window_bottom_position)) {
+        $element.addClass('in-view');
+      } else {
+        $element.removeClass('in-view');
+      }
+    }
+
+});
 }

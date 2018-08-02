@@ -1,0 +1,90 @@
+
+
+/*****  Media Queries   *****/
+
+/************ @media ******************************/
+
+
+/* use this image UNTIL the screen is 1k wide */
+/*@media screen and (max-width: 1000px){
+    .testimonialImage{
+      background-image:url("../images/clients-mobile.jpg");
+    }
+}
+*/
+@media screen and (max-width : 375px)
+{
+
+}
+
+@media screen and (max-height:420px) and (orientation: landscape){
+
+/*img{
+  border: 2px solid white;
+}
+*/
+header{
+  height:10%;
+}
+
+}
+
+/* do this UNTIL the screen is 622 wide*/
+@media screen and (min-width : 375px) and (max-width:622px)
+{
+  .contact-fill{
+    width: 424px;
+  }
+}
+
+@media screen and (min-width: 623px) and (max-width: 917px)
+{
+  .contact-fill{
+    width: 505px;
+  }
+
+}
+
+@media screen and (min-width: 918px) and (max-width: 1215px)
+{
+  .contact-fill{
+    width: 802px;
+  }
+
+}
+/* when the width gets to 1500 pixels, do this **/
+@media screen and (min-width: 1216px){
+  .contact-fill{
+    width: 1100px;
+  }
+
+}
+/** iphone 5,6,7,8 and x in landscape mode**/
+@media screen and (max-width:812px) and (orientation: landscape){
+
+
+
+}
+
+/** iphone 5 only ***/
+@media screen and (max-width:570px) and (orientation: landscape){
+
+}
+/* ipad landscape */
+@media only screen
+  and (min-device-width: 1024px)
+  and (max-device-width: 1300px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+
+}
+/* ipad pro landscape */
+@media only screen
+  and (min-device-width: 1300px)
+  and (max-device-width: 1400px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+
+}

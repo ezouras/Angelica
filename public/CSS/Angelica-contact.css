@@ -1,4 +1,4 @@
-body #contact-page{
+/*body #contact-page{
   font-family: emilys-candy, sans-serif;
   background-color:rgba(64, 64, 64, .7);
   height:100vh;
@@ -7,49 +7,70 @@ body #contact-page{
   box-sizing:border-box;
   padding:0;
 }
+*/
+
 #contact-page{
+  font-family: emilys-candy, sans-serif;
+  background-color:rgba(64, 64, 64, .7);
   display:flex;
   flex-direction:column;
-  height:100%;
-  width:100%;
+  height:100vh;
+/*width:100vh;*/
   margin:0;
-
+  /*justify-content: center;*/
+  align-items: center;
+  font-size:3rem;
+}
+.contact-fill{
+  display:flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
-}
-
-#port-banner-message{
-  background-color:black;
-  white-space: normal;
-  width: 80%;
-  height:15%;
-  cursor: pointer;
-}
-
-.contact-fill{
   background-color: black;
-  height: 65%;
-  width: 70%;
-  padding:2rem;
-  margin-top:3rem;
-  transform: skewX(-15deg);
+  width: 85vw;
+  height: 80vh;
+  margin-top:2.5rem;
+  transform: skewX(-10deg);
   font-size: 1.5rem;
 
 }
+
+#port-banner-message{
+  margin-top:1rem;
+  font-size:3rem;
+  background-color:black;
+  width: 85vw;
+  height: 6vh;
+  cursor: pointer;
+  transform: skewX(25deg);
+  text-align: center;
+  padding-top:2vh;
+}
+
+
+
+
 .contact-fill form{
   display:flex;
   flex-direction: column;
-  margin:0 auto;
+  /*margin:0 auto;*/
+
   background-color:black;
-  max-width: 75%;
-  transform: skewX(15deg);
+  width:80%;
+  /*transform: skewX(15deg);*/
   padding-bottom:0;
   height: 100%;
 
 }
+.contact-fill p{
+  font-size:3rem;
+  align-self: center;
+  transform: skewX(15deg);
+}
 
 
 .contact-fill label{
+  transform: skewX(15deg);
   color: #A40000;
   margin-top:1.25rem;
   margin-bottom:.5rem;
@@ -57,6 +78,7 @@ body #contact-page{
 
 
 .contact-fill input, textarea, select{
+  transform: skewX(15deg);
   color: black;
   font-size: 1rem;
   /*font-weight: bold;*/
@@ -68,7 +90,7 @@ body #contact-page{
 
 
 .contact-fill textarea{
-      padding: 1.5rem;
+      /*padding: 1.5rem;*/
     }
 
 .contact-fill input:invalid, select:invalid, textarea:invalid{
@@ -86,7 +108,6 @@ body #contact-page{
 }
 
 .contact-fill button{
-  margin-top: 1.2rem;
   margin: 1.5rem auto;
   color:#A40000;
   background: grey;
@@ -174,95 +195,219 @@ select:-webkit-autofill{
   color: whitesmoke;
 
 }
+/* Portrait  - ipad and ipadPro */
+@media only screen
+  and (min-device-width: 760px)
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 2){
+        body{
+          background-color: rgba(64, 64, 64, 1);
+        }
+        .contact-fill{
+          font-size:3.5rem;
+          transform: skewX(-5deg);
+        }
 
+        .contact-fill label{
+          margin-bottom: 2.5rem;
+          margin-top: 2.5rem;
+        }
+        .contact-fill input, textarea, select{
+            font-size:2.5rem;
+          }
 
+        #port-banner-message{
+          font-size:5rem;
+          margin-top:3rem;
+          padding-top: 3rem;
+          }
 
+        .contact-fill p {
+          font-size: 7rem;
+        }
 
-/*****  Media Queries   *****/
+        button, .modal_actions{
+          font-size: 2.0rem;
+          padding:1rem;
+        }
+        textarea{
+          margin-bottom: 1rem;
+        }
+        .contact-fill button{
+        font-size: 2rem;
+        width: 20rem;
+      }
 
-/************ @media ******************************/
+}
 
-
-/* use this image UNTIL the screen is 1k wide */
-/*@media screen and (max-width: 1000px){
-    .testimonialImage{
-      background-image:url("../images/clients-mobile.jpg");
+/* landscape for ipad and ipro */
+@media only screen
+  and (min-device-width: 1023px)
+  and (orientation: landscape){
+    .contact-fill{
+      height:86vh;
+      margin-top:1rem;
     }
-}
-*/
-@media screen and (max-width : 375px)
-{
+    .contact-fill label {
+      font-size: 3rem;
+      margin-bottom:1.5rem;
+    }
+    .contact-fill p {
+      font-size:4rem;
+    }
 
-}
-
-@media screen and (max-height:420px) and (orientation: landscape){
-
-/*img{
-  border: 2px solid white;
-}
-*/
-header{
-  height:10%;
-}
-
-}
-
-/* do this UNTIL the screen is 622 wide*/
-@media screen and (min-width : 375px) and (max-width:622px)
-{
-  .contact-fill{
-    width: 424px;
-  }
-}
-
-@media screen and (min-width: 623px) and (max-width: 917px)
-{
-  .contact-fill{
-    width: 505px;
+.contact-fill input, textarea, select {
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
   }
 
-}
-
-@media screen and (min-width: 918px) and (max-width: 1215px)
-{
-  .contact-fill{
-    width: 802px;
   }
 
-}
-/* when the width gets to 1500 pixels, do this **/
-@media screen and (min-width: 1216px){
-  .contact-fill{
-    width: 1100px;
-  }
+  /*landscape ipad pro only  */
 
-}
-/** iphone 5,6,7,8 and x in landscape mode**/
-@media screen and (max-width:812px) and (orientation: landscape){
+  @media only screen
+    and (min-device-width: 1300px)
+    and (orientation: landscape){
+      .contact-fill{
+        margin-top:4rem;
+        height:75vh;
+        margin-bottom:3rem;
+      }
+      .contact-fill label{
+        margin-bottom:3rem;
 
+      }
+      .contact-fill button{
+        font-size: 2rem;
+        width: 20rem;
+      }
+    }
 
+/* PORTRAIT -galaxy s5 landscape, pixel 2 , pixel 2 xl, iphone5,
+iphone 6, 7,8, ihpone x */
 
-}
-
-/** iphone 5 only ***/
-@media screen and (max-width:570px) and (orientation: landscape){
-
-}
-/* ipad landscape */
 @media only screen
-  and (min-device-width: 1024px)
-  and (max-device-width: 1300px)
-  and (orientation: landscape)
-  and (-webkit-min-device-pixel-ratio: 2) {
-
-
+  and (max-device-width: 500px){
+    #port-banner-message {
+      font-size: 6rem;
+      margin-top: 5rem;
+      padding-top:4rem;
+  }
+  .contact-fill {
+        transform: skewX(0deg);
+        width: 90%;
+        font-size: 4rem;
+        margin-top:1rem;
+      }
+  .contact-fill p {
+    font-size: 6rem;
+  }
+  .contact-fill label{
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+  }
+  .contact-fill input, textarea, select{
+    font-size: 3rem;
+  }
+  .contact-fill button {
+    margin: 2rem auto;
+    width: 18rem;
+    transform: skewX(0deg);
+  }
+  button, .modal_actions{
+    font-size: 2.0rem;
+    padding:1rem;
+  }
+  textarea{
+    margin-bottom:5rem;
+  }
 }
-/* ipad pro landscape */
+
+/* LANDSCAPE -galaxy s5 landscape, pixel 2 , pixel 2 xl, iphone5,
+iphone 6, 7,8, ihpone x, ipad, ipad pro */
+
 @media only screen
-  and (min-device-width: 1300px)
-  and (max-device-width: 1400px)
+  and (max-device-width: 823px)
   and (orientation: landscape)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  {
+    .contact-fill {
+      transform: skewX(0deg);
+      height: 90vh;
+      margin-top: 1rem;
+    }
+    .contact-fill form{
+              justify-content: center;
+    }
 
+    .contact-fill p {
+      margin:0;
+      height:0;
+      font-size: 0rem;
+    }
+    .contact-fill label{
+        font-size: 2.3rem;
+        margin-bottom: 1.25rem;
+      }
+.contact-fill input:invalid, select:invalid, textarea:invalid{
+      background: rgba(255, 0, 0,.3);
+    }
+    .contact-fill input, textarea, select{
+      font-size: 1.5rem;
+    }
+    .contact-fill textarea {
+    padding: 0rem;
+    margin-bottom:1rem;
+  }
+    .contact-fill button {
 
+      margin: .5rem auto;
+      transform: skewX(0deg);
+    }
+    button, .modal_actions {
+      font-size: 1.5rem;
+    width:12rem;
+    padding: 0;
+  }
+
+  #port-banner-message{
+      height: 3rem;
+      margin-bottom: 1rem;
 }
+
+  }
+
+/*PORTRAIT iphone X portrait only */
+  @media only screen
+  and (min-device-width : 375px)
+  and (max-device-height : 812px)
+  and (orientation : portrait)
+  {
+    .contact-fill {
+        margin-top: 5rem;
+      }
+    .contact-fill p {
+      margin:10rem;
+    }
+    textarea{
+      margin-bottom:5rem;
+
+    }
+
+  }
+
+  /* iphone X landscape only */
+
+  @media only screen
+  and (max-device-height : 380px)
+  and (min-device-width : 811px)
+  and (orientation : landscape) {
+    #port-banner-message{
+      height:8vh;
+      font-size:2rem;
+    }
+    .contact-fill label{
+      font-size:2rem;
+      margin-bottom: .5rem;
+    }
+
+  }

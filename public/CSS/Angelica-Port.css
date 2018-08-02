@@ -293,6 +293,20 @@
   }
 
     /* media queries */
+
+/* landscape of all devices*/
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 823px)
+and (orientation : landscape) {
+  .portfolio{
+    height: 19rem;
+  }
+
+}
+
+
+
     @media only screen and (max-width:450px)
     {
       .port-box-grid{
@@ -330,6 +344,9 @@
       }
       #b1-layer-photo{
         background-color:rgb(200,200,200);
+      }
+      .portfolio{
+            height: 20rem;
       }
 
       .port-banner{

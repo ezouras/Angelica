@@ -12,8 +12,6 @@ var playIntro=true;
 resetContactButtons();
 
 const port = process.env.PORT || 3000;
-//const indexFile=path.join(__dirname + '/Public/Index.html');
-
 app.set("view engine",'hbs')
 app.use(express.static(__dirname + '/public'));;
 hbs.registerPartials(__dirname+"/views/partials");
@@ -23,7 +21,6 @@ app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
   playIntro=true;
-//response.sendFile(indexFile);
  response.render('index.hbs', {
    playIntro
  });
@@ -31,8 +28,6 @@ app.get('/', function(request, response) {
 });
 
 app.get('/index', function(request, response) {
-  console.log("in get index");
-//response.sendFile(indexFile);
  response.render('index.hbs', {
    playIntro
  });
@@ -70,74 +65,3 @@ function resetContactButtons(){
   buttonPressed=false;
   waiting=true;
 }
-
-/*
-
-*****;
-
-
-
-
-
-
-
-// POST. this gets called when hitting the button:
-
-  /* you will put the output string in the email */
-
-/*  const output =`
-  <h2>Contact details are as follows:</h2>
-  <p>
-    <h3>Name:</h3><b> ${req.body.fname} ${req.body.lname}</b>
-    <br>
-    <h3>Email:</h3><b> ${req.body.email}</b>
-    <br>
-    <h3>Message:</h3><b>${req.body.message}</b>
-  </p>
-  `;
-
-  const outputText=`
-  Name: ${req.body.fname} ${req.body.lname}
-  Email: ${req.body.email}
-  Message: ${req.body.message}`;
-
-  let transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'bossyappstest@gmail.com', // generated ethereal user
-            pass: 'B0ssyAPpsT3st', // generated ethereal password
-        },
-    }); /* end of transporter creation */
-
-    // setup email data with unicode symbols
-
-    /*let mailOptions = {
-        from: 'bossyappstest@gmail.com',
-        to: 'ezouras@hotmail.com', // list of receivers
-        subject: 'Message From Angelica Website', // Subject line
-        text: outputText, // plain text body
-        html: output // html body
-    }; /* end of mailOptions creation */
-
-    // send mail with defined transport object
-    /*transporter.sendMail(mailOptions, (error, info) => {
-      if(error)
-      {
-        res.render('contact.hbs',{
-            buttonPressed:true,
-            waiting:false,
-            emailSent:false
-        });
-        resetContactButtons();
-        return;
-      }
-      //if message sent correctly render page differently
-      res.render('contact.hbs',{
-      buttonPressed:true,
-      waiting:false,
-      emailSent:true
-      });
-      resetContactButtons();
-
-      }); //finished sending Message
-  });/* end post message */

@@ -2,7 +2,6 @@ var bColor;
 //makeup box IDs
 var mkupMainBoxPostText="-mkup";
 var mkupOverlayPostText="-layer-mkup";
-var mkupAbsoluteBoxPreText="innerAbMU-";
 
 //photography box IDs
 var photoMainBoxPostText="-photo";
@@ -36,18 +35,18 @@ $(document).ready(function(){
   $window.on('scroll', check_if_in_view);
   $window.on('scroll resize', check_if_in_view);
   resetBoxVisibility();
-  if($window.width()<750)
-  wideScreen=false;  //if wide screen but still clkcing
-  onDevice=false;  //on device but wide screen - but can't over. change absolut boxes
+  if($window.width()<560)
+  wideScreen=false;  //used to set samples to vertical vs. horizontal
+  onDevice=false;  //used to know if you are clicking or hovering.
 
 /* are you on a device?*/
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
   onDevice=true;
+  console.log("on a device!");
   $animation_elements.push({element:$("#makeup"),isSection:true});
   $animation_elements.push({element:$("#photo"),isSection:true});
-  /* set absolute inner boxes of samples to cordinate with height animation instead of
-  width anination */
-  if(!wideScreen){
+
+  if(!wideScreen){  //setting css in oppositionof .css setting.
   $(".bInner").css("width","90%");
   $(".bInner").css("height","10%");
   }
@@ -103,10 +102,6 @@ function activateClick(){
 
 function clearPrevious(){
   if(lastMainBox){
-    //shrink previous box
-    //shrinkSingleBox(lastMainBox);
-    //reset color of previous boxe
-    //setBoxValues(boxId,"last");
     $("#"+lastMainBox).css( "border", "none");
     animateShrink("#"+lastMainBox);
     if(onDevice){
@@ -116,24 +111,12 @@ function clearPrevious(){
   }
 }
 
-
-/*function shrinkSingleBox(boxId){
-  //setBoxValues(boxId,"last");
-  $("#"+lastMainBox).css( "border", "none");
-  animateShrink("#"+lastMainBox);
-  if(!wideScreen){
-    animateShrink("#"+lastAbsoluteBox);
-  }
-  setPostBackgroundColor("#"+lastOverlay);
-}
-*/
-
 function growSingleBox(boxId){
 //set background color of current box being grown. bcolor is set here.
   setPreBackgroundColor(currentOverlay);
   $("#" +currentMainBox).css( "border", "1px solid red" );
   animateGrow("#"+currentMainBox);
-  if(!wideScreen){
+  if(onDevice){ //if you are clicking - the abslute box also needs to grow
     animateGrow("#"+currentAbsoluteBox);
   }
   //currentOverlay is an id for a box. set overlay to clear
@@ -168,17 +151,6 @@ else{
 
 }
 
-function resetBoxesToDefault(){
- /*animateShrink("#"+lastMainBox);
-  animateShrink("#"+lastAbsoluteBox);
-  setPostBackgroundColor("#"+lastOverlay);*/
-  lastMainBox=undefined;
-  lastAbsoluteBox=undefined;
-  lastOverlay=undefined;
-
-
-}
-
 function setBannerIDBoxClass(makeupOrPhoto){
   if(makeupOrPhoto===makeup){
     return{bannerId:bannerMakeupId,boxClass:boxMkupClass};
@@ -201,7 +173,6 @@ function getId(element){
 }
 
 function setBoxValues(innerMainBoxID,timing){
-  //innerAbMU-1
   var type=innerMainBoxID.substring(7,9);
   var id=innerMainBoxID[innerMainBoxID.length-1];
   if(timing==="current")
@@ -264,7 +235,6 @@ function animateShrink(element){
 
   }
   else{
-    //$("#"+lastMainBox).animate({
     $(element).animate({
          width: "25%",
          height:"90%"
@@ -319,7 +289,7 @@ function check_if_in_view(){
               }
         else{//photo NOT in view
           if(photoBoxesGrown){ //if boxes have not grown then just return.
-                resetBoxesToDefault();
+                clearPrevious();
                 shrinkBoxes(getId($element));
                 photoBoxesGrown=false;
           }

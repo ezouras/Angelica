@@ -23,7 +23,9 @@ var bannerPhotoId="port-banner-photo";
 var boxPhotoClass="bAnimate-photo";
 var bannerMakeupId="port-banner-makeup";
 var boxMkupClass="bAnimate-mkup";
-var boxesGrown=false;
+var boxMkupClassAbsolute="bInner-makeup";
+var makeupBoxesGrown=false;
+var photoBoxesGrown=false;
 
 
 $(document).ready(function(){
@@ -34,14 +36,22 @@ $(document).ready(function(){
   $window.on('scroll', check_if_in_view);
   $window.on('scroll resize', check_if_in_view);
   resetBoxVisibility();
-  if($window.width()<850)
-  wideScreen=false;
+  if($window.width()<750)
+  wideScreen=false;  //if wide screen but still clkcing
+  onDevice=false;  //on device but wide screen - but can't over. change absolut boxes
 
 /* are you on a device?*/
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  onDevice=true;
   $animation_elements.push({element:$("#makeup"),isSection:true});
   $animation_elements.push({element:$("#photo"),isSection:true});
-    activateClick();
+  /* set absolute inner boxes of samples to cordinate with height animation instead of
+  width anination */
+  if(!wideScreen){
+  $(".bInner").css("width","90%");
+  $(".bInner").css("height","10%");
+  }
+  activateClick();
 }
 else{
   activateHover();
@@ -75,54 +85,99 @@ function activateHover(){
   /* make box sample smaller when hover leave */
    $( ".bInner" ).mouseleave(function(e){
      setBoxValues(getId(this),"last");
-     shrinkSingleBox(getId(this));
+     clearPrevious();
+     //shrinkSingleBox(getId(this));
    });
 }
 
 function activateClick(){
   $(".bInner").click((e)=>{
-    //shrinkSingleBox(lastMainBox)
+    clearPrevious();
     setBoxValues(getId(e.target),"current");
     growSingleBox(getId(e.target));
-    shrinkSingleBox(getId(lastMainBox));
     setBoxValues(getId(e.target),"last");
   });
 
 
 };
 
+function clearPrevious(){
+  if(lastMainBox){
+    //shrink previous box
+    //shrinkSingleBox(lastMainBox);
+    //reset color of previous boxe
+    //setBoxValues(boxId,"last");
+    $("#"+lastMainBox).css( "border", "none");
+    animateShrink("#"+lastMainBox);
+    if(onDevice){
+      animateShrink("#"+lastAbsoluteBox);
+    }
+    setPostBackgroundColor("#"+lastOverlay);
+  }
+}
 
-function shrinkSingleBox(boxId){
+
+/*function shrinkSingleBox(boxId){
   //setBoxValues(boxId,"last");
   $("#"+lastMainBox).css( "border", "none");
   animateShrink("#"+lastMainBox);
+  if(!wideScreen){
+    animateShrink("#"+lastAbsoluteBox);
+  }
   setPostBackgroundColor("#"+lastOverlay);
 }
+*/
 
 function growSingleBox(boxId){
-  //setBoxValues(boxId,"current");
+//set background color of current box being grown. bcolor is set here.
   setPreBackgroundColor(currentOverlay);
   $("#" +currentMainBox).css( "border", "1px solid red" );
   animateGrow("#"+currentMainBox);
+  if(!wideScreen){
+    animateGrow("#"+currentAbsoluteBox);
+  }
+  //currentOverlay is an id for a box. set overlay to clear
   $("#"+currentOverlay).css( "background-color", "rgba(0,0,0,0)");
 
 }
 
 function growBoxes(makeupOrPhoto){
+  if(wideScreen){
     $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","growHeight");
+    }
+  else{
+    $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","growWidth");
+
+  }
     $("#"+setBannerIDBoxClass(makeupOrPhoto).bannerId).css("animation-name","shrinkWidth");
     $(".bInner-"+makeupOrPhoto).css("display","inline-block");
 }
 
 
-
 function shrinkBoxes(makeupOrPhoto){
+  if(wideScreen){
+      $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","shrinkHeight");
+}
+else{
+
+    $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","shrinkWidth");
+
+}
   $("#"+setBannerIDBoxClass(makeupOrPhoto).bannerId).css("animation-name","growWidth");
-  $('.'+setBannerIDBoxClass(makeupOrPhoto).boxClass).css("animation-name","shrinkHeight");
   $(".bInner-"+makeupOrPhoto).css("display","none");
 
 }
 
+function resetBoxesToDefault(){
+ /*animateShrink("#"+lastMainBox);
+  animateShrink("#"+lastAbsoluteBox);
+  setPostBackgroundColor("#"+lastOverlay);*/
+  lastMainBox=undefined;
+  lastAbsoluteBox=undefined;
+  lastOverlay=undefined;
+
+
+}
 
 function setBannerIDBoxClass(makeupOrPhoto){
   if(makeupOrPhoto===makeup){
@@ -155,20 +210,24 @@ function setBoxValues(innerMainBoxID,timing){
     {
       currentMainBox="b"+id+mkupMainBoxPostText;
       currentOverlay="b"+id+mkupOverlayPostText;
+      currentAbsoluteBox="innerAbMU-"+id;
     }
     else{
     currentMainBox="b"+id+photoMainBoxPostText;
     currentOverlay="b"+id+photoOverlayPostText;
+    currentAbsoluteBox="innerAbPH-"+id;
   }
   }else{
     if(type==="MU")
     {
       lastMainBox="b"+id+mkupMainBoxPostText;
       lastOverlay="b"+id+mkupOverlayPostText;
+      lastAbsoluteBox="innerAbMU-"+id;
     }
     else{
       lastMainBox="b"+id+photoMainBoxPostText;
       lastOverlay="b"+id+photoOverlayPostText;
+      lastAbsoluteBox="innerAbPH-"+id;
     }
 }
   return;
@@ -196,19 +255,17 @@ $(".bAnimate").css("background-size","100% 100%");
 
 
 function animateShrink(element){
-  /*if ( $window.width() <= 1030 &&  $window.height() <= 1400){
-    $(element).css( "border", "none");
-         $("#"+lastMainBox).animate({
+  $(element).css( "border", "none");
+  if(!wideScreen){
+    $(element).animate({
          width: "90%",
          height:"10%"
        }, 300);
 
   }
   else{
-  */
-
-    $(element).css( "border", "none");
-    $("#"+lastMainBox).animate({
+    //$("#"+lastMainBox).animate({
+    $(element).animate({
          width: "25%",
          height:"90%"
        }, 300);
@@ -216,6 +273,7 @@ function animateShrink(element){
     $(".bAnimate").css("background-size","cover");
 
   }
+}
 
 
 function check_if_in_view(){
@@ -230,17 +288,45 @@ function check_if_in_view(){
     var element_bottom_position = (element_top_position + element_height);
 
     //check to see if this current container is within viewport
-    if(this.isSection)
-    {
-      if((element_top_position>window_top_position)&&
-          (element_bottom_position < window_bottom_position)){
-            growBoxes(getId($element));
+    if(this.isSection){
+      if(getId($element)==="makeup")
+      {  //is makeup in view
+        if((element_top_position>window_top_position)&&
+            (element_bottom_position < window_bottom_position)){
+              //makeupSectionInView
+              if(!makeupBoxesGrown){
+                  growBoxes(getId($element));
+                  makeupBoxesGrown=true;
+                }
+              }
+        else{//makeup NOT in view
+          if(makeupBoxesGrown){ //if boxes have not grown then just return.
+                clearPrevious();
+                shrinkBoxes(getId($element));
+                makeupBoxesGrown=false;
           }
-      else{
-        shrinkBoxes(getId($element));
+        }
       }
-    }
-    else{
+      if(getId($element)==="photo")
+      {  //is photo in view
+        if((element_top_position>window_top_position)&&
+            (element_bottom_position < window_bottom_position)){
+              //photosectionInview
+              if(!photoBoxesGrown){
+                  growBoxes(getId($element));
+                  photoBoxesGrown=true;
+                }
+              }
+        else{//photo NOT in view
+          if(photoBoxesGrown){ //if boxes have not grown then just return.
+                resetBoxesToDefault();
+                shrinkBoxes(getId($element));
+                photoBoxesGrown=false;
+          }
+        }
+      }
+  }//end if in a section
+  else{//not a section
       if ((element_bottom_position >= window_top_position) &&
           (element_top_position <= window_bottom_position)) {
         $element.addClass('in-view');

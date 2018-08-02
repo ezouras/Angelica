@@ -1,3 +1,14 @@
+.section{
+  text-align: center;
+  height:32rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+  background-color:black;
+  color:#ddd;
+}
+
 .portfolio{
   position:relative;
 }
@@ -10,7 +21,6 @@
   width:85%;
   opacity: 1;
   transform: skewX(25deg);
-  margin-left: -2rem;
 }
 
 .port-banner{
@@ -170,7 +180,7 @@
   #port-banner-aboutMe{
     background-color:rgba(64, 64, 64, .7);
     white-space: normal;
-    width: 100%;
+    width: 95%;
     height:25%;
     margin-top:3rem;
     transform: scale(3);
@@ -215,7 +225,7 @@
 
 
 
-  /*#portfolio:hover #port-banner{width:0;}*/
+  /* animations */
 
   @keyframes growHeight{
       from{
@@ -237,13 +247,13 @@
   @keyframes growWidth{
     from{
       width:0%;
-      font-size:0px;
+      opacity:0;
       /*color:black;*/
       /*opacity: 1;*/
     }
     to{
       width:85%;
-      font-size:5rem;
+      opacity:1;
       /*color:#A40000;*/
     }
   }
@@ -251,10 +261,11 @@
   @keyframes shrinkWidth{
     from{
       width:85%;
+      opacity:1;
     }
     to{
       width:0px;
-      color:black;
+      opacity:0;
     }
   }
 
@@ -271,6 +282,15 @@
       }
 
     }
+
+
+  @media only screen and (max-width: 823px)
+  {
+    #port-banner-aboutMe p{
+            font-size: 1rem;
+            padding: 0;
+    }
+  }
 
     /* media queries */
     @media only screen and (max-width:450px)
@@ -312,6 +332,129 @@
         background-color:rgb(200,200,200);
       }
 
+      .port-banner{
+        font-size:3.5rem;
+        width:80%;
+      }
+
+      #port-banner-aboutMe{
+        height:35%;
+      }
+
+      @keyframes growWidth{
+        from{
+          width:0%;
+          opacity:0;
+          font-size:0;
+        }
+        to{
+          width:80%;
+          opacity:1;
+          font-size:3.5rem;
+        }
+      }
+
+      @keyframes shrinkWidth{
+        from{
+          font-size:0;
+          width:80%;
+          opacity:1;
+
+        }
+        to{
+          font-size:0;
+          width:0px;
+          opacity:0;
+
+        }
+      }
+
+    }
+
+
+  /* Portrait  and landscape - ipad and ipadPro */
+
+  @media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2){
+
+      #port-banner-aboutMe{
+        padding: 1rem;
+        height: 50%;
+        margin-top: 1rem;
+        margin-bottom: -2rem;
+      }
+
+      #port-banner-aboutMe p{
+        font-size:2rem;
+        line-height: 2.5rem;
+      }
+
+
+  }
+  /* ipad pro Landscape */
+  @media only screen
+    and (min-device-width: 1366px)
+    and (max-device-width: 1366px)
+    and (orientation: landscape)
+    and (-webkit-min-device-pixel-ratio: 2) {
+    #port-banner-aboutMe{
+      padding: 1rem;
+      height: 50%;
+      margin-top: 1rem;
+      margin-bottom: -2rem;
+    }
+
+    #port-banner-aboutMe p{
+      font-size:2rem;
+      line-height: 2.5rem;
+    }
+
+
+}
+
+  /* landscape for ipad and ipro */
+  /*@media only screen
+    and (min-device-width: 1023px)
+    and (orientation: landscape){
 
 
     }
+
+    /*landscape ipad pro only  */
+
+    /*@media only screen
+      and (min-device-width: 1300px)
+      and (orientation: landscape){
+
+      }
+
+  /* PORTRAIT -galaxy s5 landscape, pixel 2 , pixel 2 xl, iphone5,
+  iphone 6, 7,8, ihpone x */
+
+  /*@media only screen
+    and (max-device-width: 500px){
+
+  }
+
+
+  /*PORTRAIT iphone X portrait only */
+    /*@media only screen
+    and (min-device-width : 375px)
+    and (max-device-height : 812px)
+    and (orientation : portrait)
+    {
+    }
+
+    /* iphone X landscape only
+    and pixel 2xl*/
+
+    /*@media only screen
+    and (max-device-height : 411px)
+    and (min-device-width : 811px)
+    and (orientation : landscape) {
+
+
+    }
+    */

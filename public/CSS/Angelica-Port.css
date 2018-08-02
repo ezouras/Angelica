@@ -252,7 +252,7 @@
       /*opacity: 1;*/
     }
     to{
-      width:85%;
+      width:100%;
       opacity:1;
       /*color:#A40000;*/
     }
@@ -260,7 +260,7 @@
 
   @keyframes shrinkWidth{
     from{
-      width:85%;
+      width:100%;
       opacity:1;
     }
     to{
@@ -302,6 +302,9 @@ and (orientation : landscape) {
   .portfolio{
     height: 19rem;
   }
+  .port-boxes-container{
+    height:90%;
+  }
 
 }
 
@@ -313,12 +316,12 @@ and (orientation : landscape) {
         flex-direction:column;
       }
       .port-boxes-container{
-        height:90%;
-        width:90%;
+        height:95%;
+        width:85%;
       }
       .box{
         height: 10%;
-        width: 90%;
+        width: 85%;
       }
       #b4-layer-mkup{
         background-color:rgb(64,0,0);
@@ -365,7 +368,7 @@ and (orientation : landscape) {
           font-size:0;
         }
         to{
-          width:80%;
+          width:85%;
           opacity:1;
           font-size:3.5rem;
         }
@@ -374,7 +377,7 @@ and (orientation : landscape) {
       @keyframes shrinkWidth{
         from{
           font-size:0;
-          width:80%;
+          width:85%;
           opacity:1;
 
         }

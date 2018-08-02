@@ -47,7 +47,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   $animation_elements.push({element:$("#photo"),isSection:true});
 
   if(!wideScreen){  //setting css in oppositionof .css setting.
-  $(".bInner").css("width","90%");
+  $(".bInner").css("width","85%");
   $(".bInner").css("height","10%");
   }
   activateClick();

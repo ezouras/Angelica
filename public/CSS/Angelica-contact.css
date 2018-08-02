@@ -66,6 +66,7 @@
   font-size:3rem;
   align-self: center;
   transform: skewX(15deg);
+  margin:2rem;
 }
 
 
@@ -91,6 +92,8 @@
 
 .contact-fill textarea{
       /*padding: 1.5rem;*/
+      margin-bottom:3rem;
+      height: 5rem;
     }
 
 .contact-fill input:invalid, select:invalid, textarea:invalid{
@@ -107,12 +110,22 @@
   border-color:red;
 }
 
+.contact-fill .buttonDiv{
+  margin: 0 auto;
+  padding-bottom: .5rem;
+}
+
 .contact-fill button{
-  margin: 1.5rem auto;
+  /*margin: 1.5rem auto;
+  transform: skewX(15deg);*/
   color:#A40000;
   background: grey;
   border-color: grey;
-  transform: skewX(15deg);
+  font-family: emilys-candy, sans-serif;
+  font-size: 1.5rem;
+  width: 8rem;
+  cursor: pointer;
+
 
 }
 .contact-btn-text{
@@ -130,11 +143,12 @@
 
 
 button, .modal_actions{
-  font-size: 1rem;
+  /*font-size: 1rem;
   width: 10rem;
   padding: 0.5rem;
   font-weight: bold;
   cursor: pointer;
+  */
 
 }
 input:-webkit-autofill,
@@ -223,6 +237,7 @@ select:-webkit-autofill{
           }
 
         .contact-fill p {
+          margin: 7rem;
           font-size: 7rem;
         }
 
@@ -278,8 +293,11 @@ select:-webkit-autofill{
 
       }
       .contact-fill button{
-        font-size: 2rem;
+        /*font-size: 2rem;
         width: 20rem;
+        padding: .75rem;
+        line-height: 1rem;
+        */
       }
     }
 
@@ -301,6 +319,7 @@ iphone 6, 7,8, ihpone x */
       }
   .contact-fill p {
     font-size: 6rem;
+    margin: 10rem;
   }
   .contact-fill label{
     margin-bottom: 4rem;
@@ -310,6 +329,7 @@ iphone 6, 7,8, ihpone x */
     font-size: 3rem;
   }
   .contact-fill button {
+    font-size: 2.5rem;
     margin: 2rem auto;
     width: 18rem;
     transform: skewX(0deg);
@@ -358,16 +378,18 @@ iphone 6, 7,8, ihpone x, ipad, ipad pro */
     padding: 0rem;
     margin-bottom:1rem;
   }
-    .contact-fill button {
+  /*  .contact-fill button {
 
       margin: .5rem auto;
       transform: skewX(0deg);
+      padding-bottom: 1rem;
     }
     button, .modal_actions {
       font-size: 1.5rem;
     width:12rem;
     padding: 0;
   }
+  */
 
   #port-banner-message{
       height: 3rem;
@@ -395,10 +417,11 @@ iphone 6, 7,8, ihpone x, ipad, ipad pro */
 
   }
 
-  /* iphone X landscape only */
+  /* iphone X landscape only
+  and pixel 2xl*/
 
   @media only screen
-  and (max-device-height : 380px)
+  and (max-device-height : 411px)
   and (min-device-width : 811px)
   and (orientation : landscape) {
     #port-banner-message{
@@ -409,5 +432,9 @@ iphone 6, 7,8, ihpone x, ipad, ipad pro */
       font-size:2rem;
       margin-bottom: .5rem;
     }
+    .contact-fill button{
+      height: 1.75rem;
+      font-size: 1.5rem;
+  }
 
   }

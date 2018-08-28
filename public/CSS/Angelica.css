@@ -62,6 +62,7 @@ body .nointro{
 }
 
 .pimg1, .pimg2, .pimg3, .pimg1-nointro{
+  width:100%;
   position: relative;/* position of the container is relative,
   it simply moves as it should. */
   opacity: 0.70;
@@ -77,13 +78,17 @@ body .nointro{
   transition:opacity 12s;
 }
 
+
 .pimg1{
   background-image: url('./../Images/Photos/selfies/A-selfi-faded.jpg');
   min-height: 100%;
+
   opacity: 0;
   animation: reveal 2s forwards;
   animation-play-state: paused;
 }
+
+
 
 .pimg1-nointro{
   background-image: url('./../Images/Photos/selfies/A-selfi-faded.jpg');

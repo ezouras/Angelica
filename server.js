@@ -4,6 +4,12 @@ const bodyParser=require("body-parser");
 const nodemailer = require("nodemailer");
 const hbs = require('hbs');
 
+/*var fs=require('fs');
+var http=require("http");
+var fsTest=fs.readFileSync("./public/readme.txt");
+console.log("file sync is: ",fsTest);
+*/
+
 const app= express();
 
 //set variables for sending email
@@ -57,6 +63,14 @@ app.post("/contact",(req,res)=>{
 app.listen(port,()=>{
   console.log("server up!");
 });
+
+
+/*var httpServer=http.createServer(app);
+console.log("httpsserver is:",httpServer);
+
+httpServer.listen(port);
+console.log("Express HTTP server listening on port ",httpServer.address().port);
+*/
 
 
 //** functions **/
